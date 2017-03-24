@@ -23,7 +23,10 @@ greetIfCool coolness =
     where cool v = v == "downright frosty yo"
 
 
-
+qsort [] = []
+qsort (x: xs) = qsort lows ++ (x: qsort highs)
+    where lows = filter (<= x) xs
+          highs = filter (> x) xs
 
 
 
