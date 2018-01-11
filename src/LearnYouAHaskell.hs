@@ -56,3 +56,13 @@ zipWith' f (x:xs) (y:ys) = f x y : zipWith' f xs ys
 -- simple version
 flip' :: (a -> b -> c) -> b -> a -> c
 flip' f y x = f x y
+
+map' :: (a -> b) -> [a] -> [b]
+map' _ [] = []
+map' f (x:xs) = f x : map' f xs
+
+filter' :: (a -> Bool) -> [a] -> [a]
+filter' _ [] = []
+filter' f (x:xs)
+    | f x = x : filter' f xs
+    | otherwise = filter' f xs
