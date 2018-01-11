@@ -35,3 +35,24 @@ describeList' ls = "The list is " ++ what ls
     where what [] = "empty."
           what [x] = "a singleton list."
           what xs = "a longer list."
+
+
+maximum' :: (Ord a) => [a] -> a
+maximum' [] = error "maximum of empty list!"
+maximum' [x] = x
+maximum' (x:xs) = max x (maximum' xs)
+
+replicate' :: Int -> a -> [a]
+replicate' n x
+    | n <= 0    = []
+    | otherwise = x : replicate' (n-1) x
+
+
+zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]
+zipWith' _ [] _ = []
+zipWith' _ _ [] = []
+zipWith' f (x:xs) (y:ys) = f x y : zipWith' f xs ys
+
+-- simple version
+flip' :: (a -> b -> c) -> b -> a -> c
+flip' f y x = f x y
